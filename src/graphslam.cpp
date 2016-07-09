@@ -103,7 +103,7 @@ void GraphSlam::spin() {
 			//
 			if(graph->node_list.size() > 2 && graph->node_list.size() % solve_after_nodes == 0)
 				graph->solve(solve_iterations);
-			graph->generateMap(cur_map);
+			//graph->generateMap(cur_map);
 			// Publish the graph, scans and poses
 			this->drawPoses();
 			this->drawScans();

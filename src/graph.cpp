@@ -69,6 +69,7 @@ void Graph::addNode(GraphPose pose, const sensor_msgs::LaserScan& scan){
             e->mean[2] = transf[2];
             // Store the covariance at the node
             memcpy(e->covariance, covariance, sizeof(double) * 9);
+            
         } else {
             ROS_WARN("Error scan matching while storing node, using default values!");
             g2o::SE2 se_new(n->graph_pose.x, n->graph_pose.y, n->graph_pose.theta);
@@ -100,7 +101,7 @@ void Graph::addNode(GraphPose pose, const sensor_msgs::LaserScan& scan){
         last_node = n;
     }
     //
-    n->scan_grid = scanToOccGrid(scan, n->graph_pose);
+    //n->scan_grid = scanToOccGrid(scan, n->graph_pose);
     //
     ROS_INFO("Added node: %d, graph pose x: %f, y: %f t: %f.", n->id, n->graph_pose.x, n->graph_pose.y, n->graph_pose.theta);
 }
